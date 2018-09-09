@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-header">
+    {{stock.name}}
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Stock code: {{stock.code}}</h4>
+    <p class="card-text">Stock price: {{stock.price}}</p>
+    <p class="card-text">Stock previousPrice: {{stock.previousPrice}}</p>
+    <p class="card-text">Stock exchange: {{stock.exchange}}</p>
+  </div>
+  <div class="card-footer text-muted">
+   <button class="btn btn-primary" routerLink="stocks/list">Back to list</button>
+  </div>
+</div>

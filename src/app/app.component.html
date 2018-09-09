@@ -1,0 +1,36 @@
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>Welcome to {{title}}</h1>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12">
+            <button (click)="show()" type="button" class="btn btn-primary" role="button">{{ShowOrHidden}}</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <app-stock-list></app-stock-list>
+        </div>
+        <div class="col-4" *ngIf="showAdd" >
+            <app-create-stock (hidden)="hiddenAdd($event)"></app-create-stock>
+        </div>
+    </div>
+</div> -->
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" id="navId">
+    <li class="nav-item">
+        <a routerLink="/login" routerLinkActive="active" class="nav-link ">Login</a>
+    </li>
+    <li class="nav-item">
+        <a  routerLink="/register" routerLinkActive="active" class="nav-link">Register</a>
+    </li>
+    <li class="nav-item">
+        <a  routerLink="/stocks/list" routerLinkActive="active"  class="nav-link">Stock List</a>
+    </li>
+    <li class="nav-item">
+            <a  routerLink="/stocks/create" routerLinkActive="active"  class="nav-link">Create stock</a>
+        </li>
+</ul>
+<router-outlet></router-outlet>

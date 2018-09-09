@@ -1,0 +1,23 @@
+<!-- <div class="stock-container">
+        <div class="name">{{stock.name + ' (' + stock.code + ')'}}</div>
+        <div class="price" [class]="stock.isPositiveChange() ? 'positive' : 'negative'">
+                $ {{stock.price}}
+        </div>
+        <<button (click)="onToggleFavorite($event)" [disabled]="stock.favorite">Add to Favorite</button> -->
+<!-- <ng-content></ng-content>
+</div> -->
+<!-- <div class="stock-container" *ngFor="let stock of stocks; trackBy:trackStockByCode">
+        
+                <div class="name">{{stock.name + ' (' + stock.code + ')'}}</div>
+                <div class="price" [class]="stock.isPositiveChange() ? 'positive' : 'negative'">
+                        $ {{stock.price}}
+                </div>
+                <button (click)="toggleFavorite($event, i)" [disabled]="stock.favorite">Add to Favorite</button>
+        </div> -->    
+<td  routerLink="/stocks/{{stock.code}}">{{stock.name + ' (' + stock.code + ')'}}</td>
+<td>{{stock.exchange}}</td>
+<td [class.positive]="stock.price > stock.previousPrice" [class.negative]="stock.price <= stock.previousPrice">$
+        {{stock.price}}</td>
+<td> <button class="btn btn-primary" (click)="onToggleFavorite($event)" *ngIf="!stock.favorite">Add to Favorite</button>
+
+<button class="btn btn-primary" (click)="onToggleFavorite($event)" *ngIf="stock.favorite">Remove from Favorite</button></td>

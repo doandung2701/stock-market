@@ -1,0 +1,148 @@
+<div class="container">
+    <h2>Create Stock form</h2>
+    <div *ngIf="message">{{message}}</div>
+  <form (ngSubmit)="createStock(stockForm)" #stockForm="ngForm">
+    <div class="form-group">
+      <label for="stockName" class="col-sm-1-12 col-form-label">Stock name</label>
+      <div class="col-sm-1-12">
+          <input class="form-control" required minlength="2" type="text" placeholder="Stock Name" name="stockName" #stockName="ngModel" [(ngModel)]="stock.name"
+          />
+      </div>
+    </div>
+    <div *ngIf="stockName?.errors&&stockName?.errors.required" class="alert alert-warning col-sm-1-12">
+        Stock name is mandatory
+      </div>
+    <div class="form-group">
+        <label for="stockCode" class="col-sm-1-12 col-form-label">Stock code</label>
+        <div class="col-sm-1-12">
+            <input class="form-control" required minlength="2" #stockCode="ngModel" type="text" placeholder="Stock Code" name="stockCode" [(ngModel)]="stock.code"
+            />
+        </div>
+      </div>
+      <div *ngIf="stockCode.dirty&&stockCode.invalid" class="col-sm-1-12">
+          <div *ngIf="stockCode?.errors.required" class="alert alert-warning col-sm-1-12">
+            Stock Code is Mandatory
+          </div>
+          <div *ngIf="stockCode?.errors.minlength" class="alert alert-warning col-sm-1-12">
+            Stock Code must be at least of length 2
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="stockPrice" class="col-sm-1-12 col-form-label">Stock price</label>
+            <div class="col-sm-1-12">
+                <input class="form-control" required #stockPrice="ngModel" type="number" placeholder="Stock Price" name="stockPrice" [ngModel]="stock.price" (ngModelChange)="setStockPrice($event)"
+                />
+            </div>
+          </div>
+          <div *ngIf="stockPrice.dirty&&stockPrice.invalid" class="col-sm-1-12">
+              <div *ngIf="stockPrice.errors.required" class="alert alert-warning col-sm-1-12">
+                Stock price is mandatory
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="stockExchange">Stock Exchange</label>
+              <select class="form-control" name="stockExchange" [(ngModel)]="stock.exchange">
+                <option *ngFor="let exchange of exchanges" [value]='exchange'>{{exchange}}</option>
+              </select>
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input name="stockConfirm" [(ngModel)]="confirmed" class="form-check-input" type="checkbox">  I confirm that the information provided above is
+                accurate!
+              </label>
+            </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button [disabled]="!confirmed ||  !stockForm.valid" type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- <h2>Create Stock Form</h2>
+<div class="form-group">
+  <form (ngSubmit)="createStock(stockForm)" #stockForm="ngForm">
+    <div ngModelGroup="stock">
+      <div class="stock-name">
+        <input type="text" placeholder="Stock Name" required name="name" ngModel>
+      </div>
+      <div class="stock-code">
+        <input type="text" placeholder="Stock Code" required minlength="2" name="code" ngModel>
+      </div>
+      <div class="stock-price">
+        <input type="number" placeholder="Stock Price" name="price" required ngModel>
+      </div>
+      <div class="stock-exchange">
+        <div>
+          <select name="exchange" ngModel>
+            <option *ngFor="let exchange of exchanges" [ngValue]="exchange">{{exchange}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <button type="submit">Create</button>
+  </form>
+</div> -->
+<!-- <h2>Create Stock Form</h2>
+<div *ngIf="message">{{message}}</div>
+<div class="form-group">
+  <form [formGroup]="stockForm" (ngSubmit)="onSubmit()">
+    <div class="stock-name">
+      <input type="text" placeholder="Stock Name" formControlName="name">
+    </div>
+    <div *ngIf="stockForm.get('name').invalid &&
+    ( stockForm.get('name').dirty ||
+    stockForm.get('name').touched )">
+      Name is required
+    </div>
+
+    <div class="stock-code">
+      <input type="text" placeholder="Stock Code" formControlName="code">
+    </div>
+    <div *ngIf="stockForm.get('code').invalid &&
+( stockForm.get('code').dirty ||
+stockForm.get('code').touched )">
+      <div *ngIf="stockForm.get('code').errors.required">
+        Stock Code is required
+      </div>
+      <div *ngIf="stockForm.get('code').errors.minlength">
+        Stock Code must be at least 2 characters
+      </div>
+    </div>
+    <div class="stock-price">
+      <input type="number" placeholder="Stock Price" formControlName="price">
+    </div>
+    <div *ngIf="stockForm.get('price').invalid &&
+( stockForm.get('price').dirty ||
+stockForm.get('price').touched )">
+      <div *ngIf="stockForm.get('price').errors.required">
+        Stock Price is required
+      </div>
+      <div *ngIf="stockForm.get('price').errors.min">
+        Stock Price must be positive
+      </div>
+    </div> -->
+    <!-- <div formArrayName="notablePeople">
+      <div *ngFor="let person of notablePeople.controls; let i=index" [formGroupName]='i' class="notable-people">
+        <div> Person {{i+1}}
+        </div>
+        <div>
+          <input type="text" placeholder="Person Name" formControlName="name">
+        </div>
+        <div>
+          <input type="text" placeholder="Person Title" formControlName="title">
+        </div>
+        <button type="button" (click)="removeNotablePerson(i)">
+          Remove Person
+        </button>
+      </div>
+    </div> -->
+    <!-- <button type="button" (click)="addNotablePerson()">
+      Add Notable Person
+    </button> -->
+    <!-- <button type="submit">Submit</button>
+    <button type="button" (click)="resetForm()">
+      Reset
+    </button>
+  </form>
+</div> -->
+<!-- <h4>Stock Name is {{stock | json}}</h4> -->
